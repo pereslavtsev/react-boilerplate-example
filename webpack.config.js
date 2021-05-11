@@ -13,7 +13,10 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({ template: __dirname + '/public/index.html' }),
+  ],
   resolve: {
     extensions: ['.js', '.jsx', '.tsx', '.ts'],
   },
@@ -38,9 +41,10 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({ template: __dirname + '/public/index.html' }),
-  ],
 };
