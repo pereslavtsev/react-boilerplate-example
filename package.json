@@ -8,6 +8,7 @@
     "build": "webpack --mode production --progress",
     "lint": "eslint */**/*.{js,ts,tsx} --quiet",
     "lint:fix": "yarn lint --fix",
+    "lint:all": "concurrently \"yarn lint\" \"yarn stylelint\"",
     "stylelint": "npx stylelint \"**/*.css\"",
     "stylelint:fix": "yarn stylelint --fix",
     "prepare": "husky install"
@@ -26,6 +27,7 @@
     "@typescript-eslint/parser": "^4.23.0",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "concurrently": "^6.1.0",
     "css-loader": "^5.2.4",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
