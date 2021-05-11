@@ -1,6 +1,6 @@
 import React from 'react';
 
 export const App = () => {
-  console.log(33333);
+  const x = 2;
   return <h1>Hello React</h1>;
 };
