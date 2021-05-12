@@ -2,13 +2,16 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js',
+    filename: '[name].[contenthash].js',
   },
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),
@@ -16,6 +19,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({ template: __dirname + '/public/index.html' }),
+    new MiniCssExtractPlugin(),
+    //new BundleAnalyzerPlugin(),
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.tsx', '.ts'],
@@ -30,6 +35,7 @@ module.exports = {
         },
         extractComments: false,
       }),
+      new CssMinimizerPlugin(),
     ],
   },
   module: {
@@ -43,7 +49,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
   },

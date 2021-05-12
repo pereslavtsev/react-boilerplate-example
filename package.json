@@ -1,10 +1,9 @@
 {
   "name": "webpack-react",
   "version": "1.0.0",
-  "main": "dist/bundle.js",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack serve --mode development",
+    "dev": "webpack serve --mode development --host 0.0.0.0 --port 9000",
     "build": "webpack --mode production --progress",
     "lint": "eslint */**/*.{js,ts,tsx} --quiet",
     "lint:fix": "yarn lint --fix",
@@ -14,7 +13,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@babel/cli": "^7.13.16",
     "@babel/core": "^7.14.0",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
@@ -29,16 +27,18 @@
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "concurrently": "^6.1.0",
     "css-loader": "^5.2.4",
+    "css-minimizer-webpack-plugin": "^2.0.0",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "html-webpack-plugin": "^5.3.1",
+    "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
+    "mini-css-extract-plugin": "^1.6.0",
     "prettier": "^2.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "source-map-loader": "^2.0.1",
-    "style-loader": "^2.0.0",
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
@@ -46,10 +46,8 @@
     "terser-webpack-plugin": "^5.1.1",
     "typescript": "^4.2.4",
     "webpack": "^5.37.0",
+    "webpack-bundle-analyzer": "^4.4.1",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
-  },
-  "devDependencies": {
-    "husky": "^6.0.0"
   }
 }
